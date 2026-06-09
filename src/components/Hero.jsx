@@ -6,148 +6,153 @@ const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=${WHATSAPP_MSG}`
 
 export default function Hero() {
   return (
-    <section
-      id="hero"
-      style={{
-        height: '970px',
-        display: 'grid',
-        gridTemplateColumns: '1fr 1fr',
-        position: 'relative',
-        overflow: 'hidden',
-        paddingTop: '80px',
-      }}
-    >
-      {/* Left: text content */}
-      <div style={{
-        display: 'flex',
-        alignItems: 'center',
-        padding: 'clamp(40px, 6vw, 130px)',
-        position: 'relative',
-        zIndex: 2,
-      }}>
-        {/* Radial glow behind text */}
-        <div aria-hidden="true" style={{
-          position: 'absolute',
-          top: '40%', left: '0',
-          width: '500px', height: '500px',
-          background: 'radial-gradient(circle, rgba(201,168,76,0.05) 0%, transparent 70%)',
-          pointerEvents: 'none',
-        }} />
+    <section id="hero" style={{
+      paddingTop: '80px',
+      display: 'flex',
+      flexDirection: 'column',
+    }}>
 
-        <div style={{ position: 'relative' }}>
-          {/* Label */}
-          <div className="section-label" style={{ marginBottom: '24px' }}>
-            Coupe du Monde 2026 · Édition Collector
-          </div>
-
-          {/* Title */}
-          <h1 style={{
-            fontFamily: 'var(--font-display)',
-            fontWeight: 900,
-            fontSize: 'clamp(40px, 5vw, 78px)',
-            lineHeight: 0.95,
-            letterSpacing: '-0.01em',
-            textTransform: 'uppercase',
-            marginBottom: '28px',
-          }}>
-            Protège tes<br />
-            cartes Panini<br />
-            <span style={{ color: 'var(--gold)' }}>comme un pro.</span>
-          </h1>
-
-          <div className="divider" />
-
-          {/* Subtitle */}
-          <p style={{
-            fontSize: 'clamp(15px, 1.5vw, 18px)',
-            fontWeight: 300,
-            color: 'rgba(245,242,236,0.65)',
-            maxWidth: '420px',
-            marginBottom: '40px',
-            lineHeight: 1.7,
-          }}>
-            La boîte parfaite, format poche, spécialement conçue pour transporter et échanger tes stickers Panini en toute sécurité.
-          </p>
-
-          {/* CTAs */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', maxWidth: '320px' }}>
-            <a href="#commander" className="btn btn-primary" style={{ justifyContent: 'center' }}>
-              Commander la Panini Box
-            </a>
-            <a
-              href={WHATSAPP_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn btn-whatsapp"
-              style={{ justifyContent: 'center' }}
-            >
-              <WhatsAppIcon />
-              Écrire sur WhatsApp
-            </a>
-          </div>
-
-          {/* Stats strip */}
-          <div style={{
-            marginTop: '52px',
-            paddingTop: '28px',
-            borderTop: '1px solid rgba(255,255,255,0.07)',
-            display: 'flex',
-            gap: '36px',
-            flexWrap: 'wrap',
-          }}>
-            {[
-              { num: '3D', label: 'Impression précise' },
-              { num: '~80', label: 'Stickers protégés' },
-              { num: '∞', label: 'Échanges sereins' },
-            ].map(({ num, label }) => (
-              <div key={label}>
-                <div style={{
-                  fontFamily: 'var(--font-display)',
-                  fontWeight: 900,
-                  fontSize: '26px',
-                  color: 'var(--gold)',
-                  lineHeight: 1,
-                }}>{num}</div>
-                <div style={{ fontSize: '12px', color: 'var(--grey)', marginTop: '4px' }}>{label}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-
-      {/* Right: product photo */}
-      <div style={{
-        position: 'relative',
-        overflow: 'hidden',
-        height: '100%',
-      }}>
-        <img
-          src="/Présentation boite.jpeg"
-          alt="PaniniBox — boîte de protection stickers Panini Coupe du Monde 2026"
-          style={{
-            width: '100%',
-            height: '100%',
-            objectFit: 'contain',
-            objectPosition: 'center top',
-            display: 'block',
-          }}
-        />
-      </div>
-
-      {/* Mobile: stack vertically */}
+      {/* Image en haut sur mobile, à droite sur desktop */}
       <style>{`
+        #hero-inner {
+          display: grid;
+          gridTemplateColumns: 1fr 1fr;
+          height: 890px;
+        }
+        #hero-image {
+          order: 0;
+        }
         @media (max-width: 768px) {
-          #hero {
-            grid-template-columns: 1fr !important;
-            grid-template-rows: auto auto;
+          #hero-inner {
+            display: flex !important;
+            flex-direction: column !important;
+            height: auto !important;
           }
-          #hero > div:last-child {
-            height: 60vw;
-            min-height: 280px;
+          #hero-image {
             order: -1;
+            width: 100%;
+            height: 60vw;
+            min-height: 240px;
+            max-height: 360px;
+          }
+          #hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center top;
           }
         }
       `}</style>
+
+      <div id="hero-inner">
+
+        {/* Texte gauche */}
+        <div style={{
+          display: 'flex',
+          alignItems: 'center',
+          padding: 'clamp(24px, 6vw, 80px)',
+          position: 'relative',
+          zIndex: 2,
+        }}>
+          <div style={{ position: 'relative', width: '100%' }}>
+
+            <div className="section-label" style={{ marginBottom: '24px' }}>
+              Coupe du Monde 2026 · Édition Collector
+            </div>
+
+            <h1 style={{
+              fontFamily: 'var(--font-display)',
+              fontWeight: 900,
+              fontSize: 'clamp(36px, 5vw, 78px)',
+              lineHeight: 0.95,
+              letterSpacing: '-0.01em',
+              textTransform: 'uppercase',
+              marginBottom: '28px',
+            }}>
+              Protège tes<br />
+              cartes Panini<br />
+              <span style={{ color: 'var(--gold)' }}>comme un pro.</span>
+            </h1>
+
+            <div className="divider" />
+
+            <p style={{
+              fontSize: 'clamp(14px, 1.5vw, 18px)',
+              fontWeight: 300,
+              color: 'rgba(245,242,236,0.65)',
+              maxWidth: '420px',
+              marginBottom: '40px',
+              lineHeight: 1.7,
+              marginTop: '20px',
+            }}>
+              La boîte parfaite, format poche, spécialement conçue pour transporter et échanger tes stickers Panini en toute sécurité.
+            </p>
+
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', maxWidth: '320px' }}>
+              <a href="#commander" className="btn btn-primary" style={{ justifyContent: 'center' }}>
+                Commander la Panini Box
+              </a>
+              
+                href={WHATSAPP_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn btn-whatsapp"
+                style={{ justifyContent: 'center' }}
+              >
+                <WhatsAppIcon />
+                Écrire sur WhatsApp
+              </a>
+            </div>
+
+            <div style={{
+              marginTop: '40px',
+              paddingTop: '24px',
+              borderTop: '1px solid rgba(255,255,255,0.07)',
+              display: 'flex',
+              gap: '32px',
+              flexWrap: 'wrap',
+            }}>
+              {[
+                { num: '3D', label: 'Impression précise' },
+                { num: '~70', label: 'Stickers protégés' },
+                { num: '∞', label: 'Échanges sereins' },
+              ].map(({ num, label }) => (
+                <div key={label}>
+                  <div style={{
+                    fontFamily: 'var(--font-display)',
+                    fontWeight: 900,
+                    fontSize: '26px',
+                    color: 'var(--gold)',
+                    lineHeight: 1,
+                  }}>{num}</div>
+                  <div style={{ fontSize: '12px', color: 'var(--grey)', marginTop: '4px' }}>{label}</div>
+                </div>
+              ))}
+            </div>
+
+          </div>
+        </div>
+
+        {/* Image droite / haut sur mobile */}
+        <div id="hero-image" style={{
+          position: 'relative',
+          overflow: 'hidden',
+          height: '100%',
+        }}>
+          <img
+            src="/Présentation boite.jpeg"
+            alt="PaniniBox — boîte de protection stickers Panini Coupe du Monde 2026"
+            style={{
+              width: '100%',
+              height: '100%',
+              objectFit: 'contain',
+              objectPosition: 'center top',
+              display: 'block',
+            }}
+          />
+        </div>
+
+      </div>
     </section>
   )
 }

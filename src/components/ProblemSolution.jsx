@@ -29,6 +29,30 @@ const solutions = [
 export default function ProblemSolution() {
   return (
     <section id="concept" style={{ background: 'var(--black-mid)', padding: '48px 0' }}>
+
+      <style>{`
+        #problem-grid {
+          display: grid;
+          grid-template-columns: 1fr 400px;
+          gap: 48px;
+          align-items: start;
+        }
+        #problem-image {
+          margin-top: -150px;
+        }
+        @media (max-width: 768px) {
+          #problem-grid {
+            grid-template-columns: 1fr !important;
+          }
+          #problem-image {
+            margin-top: 0 !important;
+            width: 60% !important;
+            margin-left: auto !important;
+            margin-right: auto !important;
+          }
+        }
+      `}</style>
+
       <div className="container">
 
         {/* Problem block */}
@@ -40,20 +64,15 @@ export default function ProblemSolution() {
             fontSize: 'clamp(36px, 5vw, 60px)',
             textTransform: 'uppercase',
             lineHeight: 1,
-            marginBottom: '48px',
+            marginBottom: '28px',
           }}>
             Tes doubles méritent<br />
             <span style={{ color: 'var(--grey)' }}>mieux que ta poche.</span>
           </h2>
 
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: '1fr 400px',
-            gap: '48px',
-            alignItems: 'start',
-          }}>
+          <div id="problem-grid">
 
-            {/* Colonne gauche : les 2 cartes */}
+            {/* Cartes gauche */}
             <div style={{
               display: 'grid',
               gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))',
@@ -79,8 +98,9 @@ export default function ProblemSolution() {
               ))}
             </div>
 
-            {/* Colonne droite : image */}
+            {/* Image droite */}
             <img
+              id="problem-image"
               src="/canvas boite.png"
               alt="PaniniBox"
               style={{
@@ -88,17 +108,16 @@ export default function ProblemSolution() {
                 height: 'auto',
                 objectFit: 'contain',
                 borderRadius: 'var(--radius-lg)',
-                marginTop: '-150px',
               }}
             />
 
           </div>
         </div>
 
-        {/* Arrow transition */}
+        {/* Flèche */}
         <div style={{
           textAlign: 'center',
-          marginBottom: '32px',
+          margin: '32px 0',
           color: 'var(--gold)',
           fontSize: '32px',
           opacity: 0.5,
@@ -113,7 +132,7 @@ export default function ProblemSolution() {
             fontSize: 'clamp(36px, 5vw, 60px)',
             textTransform: 'uppercase',
             lineHeight: 1,
-            marginBottom: '48px',
+            marginBottom: '28px',
           }}>
             La PaniniBox.<br />
             <span style={{ color: 'var(--gold)' }}>Simple. Efficace. Élégante.</span>
