@@ -4,57 +4,48 @@ const WHATSAPP_NUMBER = import.meta.env.VITE_WHATSAPP_NUMBER || '33600000000'
 const WHATSAPP_MSG = encodeURIComponent("Bonjour, je suis intéressé par la PaniniBox Coupe du Monde 2026. Pouvez-vous m'en dire plus ?")
 const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=${WHATSAPP_MSG}`
 
+const isMobile = typeof window !== 'undefined' && window.innerWidth <= 768
+
 export default function Hero() {
   return (
     <section id="hero" style={{
       paddingTop: '80px',
-      display: 'flex',
-      flexDirection: 'column',
     }}>
 
-      {/* Image en haut sur mobile, à droite sur desktop */}
-      <style>{`
-        #hero-inner {
-          display: grid;
-          gridTemplateColumns: 1fr 1fr;
-          height: 890px;
-        }
-        #hero-image {
-          order: 0;
-        }
-        @media (max-width: 768px) {
-          #hero-inner {
-            display: flex !important;
-            flex-direction: column !important;
-            height: auto !important;
-          }
-          #hero-image {
-            order: -1;
-            width: 100%;
-            height: 60vw;
-            min-height: 240px;
-            max-height: 360px;
-          }
-          #hero-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center top;
-          }
-        }
-      `}</style>
+      <div style={{
+        display: 'grid',
+        gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+        minHeight: '500px',
+      }}>
 
-      <div id="hero-inner">
+        {/* Image — apparaît en premier sur mobile grâce à order */}
+        <div style={{
+          position: 'relative',
+          overflow: 'hidden',
+          minHeight: '300px',
+          order: 2,
+        }}>
+          <img
+            src="/Présentation boite.jpeg"
+            alt="PaniniBox"
+            style={{
+              width: '100%',
+              height: '100%',
+              objectFit: 'contain',
+              objectPosition: 'center top',
+              display: 'block',
+            }}
+          />
+        </div>
 
-        {/* Texte gauche */}
+        {/* Texte */}
         <div style={{
           display: 'flex',
           alignItems: 'center',
-          padding: 'clamp(24px, 6vw, 80px)',
-          position: 'relative',
-          zIndex: 2,
+          padding: 'clamp(24px, 5vw, 80px)',
+          order: 1,
         }}>
-          <div style={{ position: 'relative', width: '100%' }}>
+          <div style={{ width: '100%' }}>
 
             <div className="section-label" style={{ marginBottom: '24px' }}>
               Coupe du Monde 2026 · Édition Collector
@@ -81,9 +72,9 @@ export default function Hero() {
               fontWeight: 300,
               color: 'rgba(245,242,236,0.65)',
               maxWidth: '420px',
-              marginBottom: '40px',
-              lineHeight: 1.7,
+              marginBottom: '32px',
               marginTop: '20px',
+              lineHeight: 1.7,
             }}>
               La boîte parfaite, format poche, spécialement conçue pour transporter et échanger tes stickers Panini en toute sécurité.
             </p>
@@ -92,7 +83,7 @@ export default function Hero() {
               <a href="#commander" className="btn btn-primary" style={{ justifyContent: 'center' }}>
                 Commander la Panini Box
               </a>
-              
+              <a
                 href={WHATSAPP_URL}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -131,25 +122,6 @@ export default function Hero() {
             </div>
 
           </div>
-        </div>
-
-        {/* Image droite / haut sur mobile */}
-        <div id="hero-image" style={{
-          position: 'relative',
-          overflow: 'hidden',
-          height: '100%',
-        }}>
-          <img
-            src="/Présentation boite.jpeg"
-            alt="PaniniBox — boîte de protection stickers Panini Coupe du Monde 2026"
-            style={{
-              width: '100%',
-              height: '100%',
-              objectFit: 'contain',
-              objectPosition: 'center top',
-              display: 'block',
-            }}
-          />
         </div>
 
       </div>
