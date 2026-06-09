@@ -9,19 +9,19 @@ export default function Hero() {
     <section
       id="hero"
       style={{
-        minHeight: '100vh',
+        height: '970px',
         display: 'grid',
         gridTemplateColumns: '1fr 1fr',
         position: 'relative',
         overflow: 'hidden',
-        paddingTop: '64px',
+        paddingTop: '80px',
       }}
     >
       {/* Left: text content */}
       <div style={{
         display: 'flex',
         alignItems: 'center',
-        padding: 'clamp(40px, 6vw, 80px)',
+        padding: 'clamp(40px, 6vw, 130px)',
         position: 'relative',
         zIndex: 2,
       }}>
@@ -119,25 +119,19 @@ export default function Hero() {
       <div style={{
         position: 'relative',
         overflow: 'hidden',
+        height: '100%',
       }}>
         <img
-          src="/canvas boite.png"
+          src="/Présentation boite.jpeg"
           alt="PaniniBox — boîte de protection stickers Panini Coupe du Monde 2026"
           style={{
             width: '100%',
             height: '100%',
-            objectFit: 'cover',
-            objectPosition: 'center',
+            objectFit: 'contain',
+            objectPosition: 'center top',
             display: 'block',
           }}
         />
-        {/* Subtle left-edge fade to blend with dark background */}
-        <div aria-hidden="true" style={{
-          position: 'absolute',
-          inset: 0,
-          background: 'linear-gradient(to right, var(--black) 0%, transparent 18%)',
-          pointerEvents: 'none',
-        }} />
       </div>
 
       {/* Mobile: stack vertically */}

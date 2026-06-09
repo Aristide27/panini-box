@@ -1,12 +1,12 @@
 import React from 'react'
 
 const features = [
-  { label: 'Matière', value: 'PLA premium, impression 3D haute résolution' },
+  { label: 'Matière', value: 'PTG premium, impression 3D haute résolution' },
   { label: 'Format', value: 'Poche de pantalon, ultra-fin' },
-  { label: 'Capacité', value: 'Environ 80 stickers en double' },
+  { label: 'Capacité', value: 'Environ 70 stickers panini' },
   { label: 'Fermeture', value: 'Couvercle clipsé, maintien assuré' },
-  { label: 'Logo', value: 'Gravé en relief, logo de la Coupe du Monde 2026' },
-  { label: 'Couleurs', value: 'Blanc' },
+  { label: 'Logo', value: 'Logo Coupe du Monde 2026 gravé en relief' },
+  { label: 'Couleur', value: 'Blanc' },
 ]
 
 export default function Product() {

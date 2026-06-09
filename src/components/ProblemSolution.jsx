@@ -9,10 +9,6 @@ const problems = [
     title: 'Difficile à gérer',
     text: 'Tenir 30 doubles en vrac dans la main pendant un échange, c\'est le chaos. On perd des cartes, on en corne d\'autres.',
   },
-  {
-    title: 'Les échanges virent mal',
-    text: 'Présenter des cartes froissées ou sales donne une mauvaise impression. Personne ne veut d\'un double en mauvais état.',
-  },
 ]
 
 const solutions = [
@@ -32,11 +28,11 @@ const solutions = [
 
 export default function ProblemSolution() {
   return (
-    <section id="concept" style={{ background: 'var(--black-mid)' }}>
+    <section id="concept" style={{ background: 'var(--black-mid)', padding: '48px 0' }}>
       <div className="container">
 
         {/* Problem block */}
-        <div style={{ marginBottom: '80px' }}>
+        <div style={{ marginBottom: '0px' }}>
           <div className="section-label">Le problème</div>
           <h2 style={{
             fontFamily: 'var(--font-display)',
@@ -52,34 +48,57 @@ export default function ProblemSolution() {
 
           <div style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
-            gap: '24px',
+            gridTemplateColumns: '1fr 400px',
+            gap: '48px',
+            alignItems: 'start',
           }}>
-            {problems.map(({ title, text }) => (
-              <div key={title} style={{
-                background: 'var(--black)',
-                border: '1px solid rgba(255,255,255,0.05)',
+
+            {/* Colonne gauche : les 2 cartes */}
+            <div style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))',
+              gap: '24px',
+            }}>
+              {problems.map(({ title, text }) => (
+                <div key={title} style={{
+                  background: 'var(--black)',
+                  border: '1px solid rgba(255,255,255,0.05)',
+                  borderRadius: 'var(--radius-lg)',
+                  padding: '28px',
+                }}>
+                  <h3 style={{
+                    fontFamily: 'var(--font-display)',
+                    fontWeight: 700,
+                    fontSize: '18px',
+                    textTransform: 'uppercase',
+                    marginBottom: '10px',
+                    letterSpacing: '0.03em',
+                  }}>{title}</h3>
+                  <p style={{ color: 'rgba(245,242,236,0.55)', fontSize: '15px', lineHeight: 1.65 }}>{text}</p>
+                </div>
+              ))}
+            </div>
+
+            {/* Colonne droite : image */}
+            <img
+              src="/canvas boite.png"
+              alt="PaniniBox"
+              style={{
+                width: '100%',
+                height: 'auto',
+                objectFit: 'contain',
                 borderRadius: 'var(--radius-lg)',
-                padding: '28px',
-              }}>
-                <h3 style={{
-                  fontFamily: 'var(--font-display)',
-                  fontWeight: 700,
-                  fontSize: '18px',
-                  textTransform: 'uppercase',
-                  marginBottom: '10px',
-                  letterSpacing: '0.03em',
-                }}>{title}</h3>
-                <p style={{ color: 'rgba(245,242,236,0.55)', fontSize: '15px', lineHeight: 1.65 }}>{text}</p>
-              </div>
-            ))}
+                marginTop: '-150px',
+              }}
+            />
+
           </div>
         </div>
 
         {/* Arrow transition */}
         <div style={{
           textAlign: 'center',
-          marginBottom: '80px',
+          marginBottom: '32px',
           color: 'var(--gold)',
           fontSize: '32px',
           opacity: 0.5,
