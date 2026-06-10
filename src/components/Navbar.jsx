@@ -26,7 +26,7 @@ export default function Navbar() {
           gap: '10px',
           fontFamily: 'var(--font-display)',
           fontWeight: 900,
-          fontSize: '26px',
+          fontSize: 'clamp(16px, 4vw, 26px)',
           letterSpacing: '0.04em',
         }}
       >
